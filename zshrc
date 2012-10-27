@@ -1,15 +1,3 @@
-# Cygwin Zsh Here
-case "${OSTYPE}" in
-cygwin)
-    if [ "$OPEN_CYGWIN_FROM" != "" -a -x /bin/cygpath ]; then
-    #  OPEN_CYGWIN_FROM=$(echo $OPEN_CYGWIN_FROM | sed 's/\(^"\|"$\)//g')
-      OPEN_CYGWIN_PATH=$(/bin/cygpath -u "$OPEN_CYGWIN_FROM")
-      export OPEN_CYGWIN_PATH
-      cd "$OPEN_CYGWIN_PATH"
-    fi
-    ;;
-esac
-
 #
 # set prompt
 #
@@ -131,44 +119,6 @@ autoload zed
 #
 setopt complete_aliases     # aliased ls needs if file/dir completions work
 
-alias where="command -v"
-alias j="jobs -l"
-alias screen="screen -U -s zsh"
-alias sudo="sudo -E "
-
-case "${OSTYPE}" in
-freebsd*|darwin*)
-    alias ls="ls -G -w"
-    ;;
-linux*)
-    alias ls="ls --color"
-    ;;
-cygwin*)
-    alias ls="ls -v -F --color=auto"
-    alias -g open=cygstart
-    alias apt-cyg='apt-cyg -u -m ftp://ftp.iij.ad.jp/pub/cygwin/'
-    alias sudo="sudo"
-    alias ec="emacsclientw -s sankitch-win7-server"
-    alias mysql="mysql -h127.0.0.1"
-    ;;
-esac
-
-alias la="ls -a"
-alias ll="ls -l"
-alias lla="ls -la"
-alias -g re="rbenv exec"
-alias -g bi="bundle install --path=vendor/bundle --without production"
-alias -g bu="bundle update"
-alias -g be="bundle exec"
-
-alias du="du -h"
-alias df="df -h"
-
-alias gcomp="curl -s http://getcomposer.org/installer | php"
-
-alias su="su -l"
-
-#alias diff="colordiff --side-by-side --suppress-common-lines"
 
 ## terminal configuration
 #
@@ -189,6 +139,72 @@ xterm|xterm-color|kterm|kterm-color)
 esac
 #zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
 
+
+# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
+setopt prompt_subst
+
+RPROMPT='[`rprompt-git-current-branch`%~]'
+
+#if [[ -f ~/.nodebrew/nodebrew ]]; then
+#    nodebrew use v0.8.2
+#fi
+
+# load inits file
+case "${OSTYPE}" in
+    cygwin)
+        source $HOME/.zsh.d/inits/cygwin.zsh
+        ;;
+    freebsd*|darwin*)
+        source $HOME/.zsh.d/inits/darwin.zsh
+        ;;
+    linux*)
+        source $HOME/.zsh.d/inits/linux.zsh
+        ;;
+esac
+
+
+# aliases
+# global
+alias -g re="rbenv exec"
+alias -g bi="bundle install --path=vendor/bundle --without production"
+alias -g bu="bundle update"
+alias -g be="bundle exec"
+
+# aliases
+alias where="command -v"
+alias j="jobs -l"
+alias screen="screen -U -s zsh"
+alias sudo="sudo -E "
+
+alias la="ls -a"
+alias ll="ls -l"
+alias lla="ls -la"
+
+alias du="du -h"
+alias df="df -h"
+
+alias gcomp="curl -s http://getcomposer.org/installer | php"
+
+alias su="su -l"
+
+case "${OSTYPE}" in
+freebsd*|darwin*)
+    alias ls="ls -G -w"
+    ;;
+linux*)
+    alias ls="ls --color"
+    ;;
+cygwin*)
+    alias ls="ls -v -F --color=auto"
+    alias -g open=cygstart
+    alias apt-cyg='apt-cyg -u -m ftp://ftp.iij.ad.jp/pub/cygwin/'
+    alias sudo="sudo"
+    alias ec="emacsclientw -s sankitch-win7-server"
+    alias mysql="mysql -h127.0.0.1"
+    ;;
+esac
+
+# my functions
 function tweet {
     echo $@ | tw --pipe --silent
 }
@@ -219,25 +235,6 @@ function rprompt-git-current-branch {
         echo "%{$color%}$name%{$reset_color%} "
 }
 
-# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
-setopt prompt_subst
-
-RPROMPT='[`rprompt-git-current-branch`%~]'
-
-#anything-history ()  {
-#    tmpfile=/tmp/.azh-tmp-file
-#    emacsclient --eval '(anything-zsh-history-from-zle)' > /dev/null
-#    zle -U "`cat $tmpfile`"
-#    rm $tmpfile
-#}
-#zle -N anything-history
-#bindkey "^R" anything-history
-
-#if [[ -f ~/.nodebrew/nodebrew ]]; then
-#    nodebrew use v0.8.2
-#fi
-#
-
-# my functions
+# my functions on gist
 source $GISTY_DIR/3965335/zsh-function-cd-gisty-dir.zsh
 source $GISTY_DIR/3965342/zsh-function-cd-source-dir.zsh
