@@ -1,2 +1,10 @@
 #+TITLE: My zsh configurations
 My zsh configurations.
+
+* Usage
+
+#+BEGIN_EXAMPLE
+cd; git clone git@github.com:sankitch/.zsh.d.git
+echo 'source .zsh.d/zshenv' >.zshenv
+echo 'source .zsh.d/zshrc' >.zshrc
+#+END_EXAMPLE
