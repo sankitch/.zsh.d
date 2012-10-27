@@ -1,4 +1,5 @@
 #+TITLE: My zsh configurations
+#+AUTHOR: sankitch <i@sankitch.me>
 My zsh configurations.
 
 * Usage
