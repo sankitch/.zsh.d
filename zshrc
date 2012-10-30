@@ -20,11 +20,16 @@ esac
 
 
 # PROMPT
-#PS1="\[\e]0;\u@\h: \w\a\]\[\033[01;36m\]\u@\h\[\033[00m\]:\[\033[01;34m\]\w\[\033[00m\]\$ "
-PS1="[@${HOST%%.*} %1~]%(!.#.$) " # この辺は好み
-RPROMPT="%T" # 右側に時間を表示する
-setopt transient_rprompt # 右側まで入力がきたら時間を消す
-setopt prompt_subst # 便利なプロンプト
+PS1="[@${HOST%%.*} %1~]%(!.#.$) "
+
+# 右側に時間を表示する
+RPROMPT="%T"
+
+# 右側まで入力がきたら時間を消す
+setopt transient_rprompt
+
+# 便利なプロンプト
+setopt prompt_subst
 
 
 ## Keybind configuration
@@ -32,12 +37,18 @@ setopt prompt_subst # 便利なプロンプト
 # emacs like keybind (e.x. Ctrl-a gets to line head and Ctrl-e gets
 #   to end) and something additions
 #
-bindkey -e # emacsライクなキーバインド
-bindkey "^[[1~" beginning-of-line # Home gets to line head
-bindkey "^[[4~" end-of-line # End gets to line end
-bindkey "^[[3~" delete-char # Del
 
-autoload -U compinit # 強力な補完機能
+# emacsライクなキーバインド
+bindkey -e
+# Home gets to line head
+bindkey "^[[1~" beginning-of-line
+# End gets to line end
+bindkey "^[[4~" end-of-line
+# Del
+bindkey "^[[3~" delete-char
+
+# 強力な補完機能
+autoload -U compinit
 #compinit -u # このあたりを使わないとzsh使ってる意味なし
 if [ "`/bin/uname -o 2> /dev/null`" = "Cygwin" ]; then
  # cygwinの設定
@@ -50,41 +61,33 @@ else
 fi
 
 # auto change directory
-#
 setopt auto_cd
 
 # auto directory pushd that you can get dirs list by cd -[tab]
-#
+
 #setopt autopushd # cdの履歴を表示
 setopt auto_pushd
 
 # command correct edition before each completion attempt
-#
 setopt correct
 
 # compacked complete list display
-#
 setopt list_packed
 
 # no remove postfix slash of command line
-#
 setopt noautoremoveslash
 
 # no beep sound when complete list displayed
-#
 setopt nolistbeep
 
 # 同ディレクトリを履歴に追加しない
-#
 setopt pushd_ignore_dups
 
 # 補完一覧ファイル種別表示
-#
 setopt list_types
 
 
 ## Command history configuration
-#
 HISTFILE=~/.zsh_history # historyファイル
 HISTSIZE=50000 # ファイルサイズ
 SAVEHIST=50000 # saveする量
@@ -96,7 +99,6 @@ setopt hist_ignore_space #先頭にスペースを入れると履歴に残さな
 
 
 # historical backward/forward search with linehead string binded to ^P/^N
-#
 autoload history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
@@ -106,24 +108,20 @@ bindkey "\\ep" history-beginning-search-backward-end
 bindkey "\\en" history-beginning-search-forward-end
 
 # reverse menu completion binded to Shift-Tab
-#
 bindkey "\e[Z" reverse-menu-complete
 
 bindkey '^R' zaw-history
 
 ## zsh editor
-#
 autoload zed
 
 ## Alias configuration
 #
 # expand aliases before completing
-#
-setopt complete_aliases     # aliased ls needs if file/dir completions work
-
+# aliased ls needs if file/dir completions work
+setopt complete_aliases
 
 ## terminal configuration
-#
 case "${TERM}" in
 screen)
     TERM=xterm
@@ -131,7 +129,6 @@ screen)
 esac
 
 # set terminal title including current directory
-#
 case "${TERM}" in
 xterm|xterm-color|kterm|kterm-color)
     precmd() {
@@ -139,11 +136,6 @@ xterm|xterm-color|kterm|kterm-color)
     }
     ;;
 esac
-#zstyle ':completion:*' list-colors 'di=34' 'ln=35' 'so=32' 'ex=31' 'bd=46;34' 'cd=43;34'
-
-
-# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
-setopt prompt_subst
 
 RPROMPT='[`rprompt-git-current-branch`%~]'
 
@@ -178,6 +170,7 @@ alias where="command -v"
 alias j="jobs -l"
 alias screen="screen -U -s zsh"
 alias sudo="sudo -E "
+alias github="cd ~/.github; git"
 
 alias la="ls -a"
 alias ll="ls -l"
