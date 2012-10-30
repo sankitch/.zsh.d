@@ -169,6 +169,7 @@ alias -g re="rbenv exec"
 alias -g bi="bundle install --path=vendor/bundle --without production"
 alias -g bu="bundle update"
 alias -g be="bundle exec"
+alias -g CA="| canything"
 
 # aliases
 alias where="command -v"
