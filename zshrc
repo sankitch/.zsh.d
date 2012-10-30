@@ -235,6 +235,7 @@ function rprompt-git-current-branch {
         echo "%{$color%}$name%{$reset_color%} "
 }
 
+source ${PWD}/vendors/zaw/zaw.zsh
 # my functions on gist
 source $GISTY_DIR/3965335/zsh-function-cd-gisty-dir.zsh
 source $GISTY_DIR/3965342/zsh-function-cd-source-dir.zsh
