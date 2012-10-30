@@ -110,8 +110,6 @@ bindkey "\\en" history-beginning-search-forward-end
 # reverse menu completion binded to Shift-Tab
 bindkey "\e[Z" reverse-menu-complete
 
-bindkey '^R' zaw-history
-
 ## zsh editor
 autoload zed
 
@@ -163,7 +161,7 @@ alias -g re="rbenv exec"
 alias -g bi="bundle install --path=vendor/bundle --without production"
 alias -g bu="bundle update"
 alias -g be="bundle exec"
-alias -g CA="| canything"
+alias -g PE="| percol --match-method=migemo"
 
 # aliases
 alias where="command -v"
@@ -231,26 +229,31 @@ function rprompt-git-current-branch {
         echo "%{$color%}$name%{$reset_color%} "
 }
 
-source ${HOME}/.zsh.d/vendors/zaw/zaw.zsh
+function exists { which $1 &> /dev/null }
 
-zmodload zsh/parameter
+if exists percol; then
+    function percol_select_history() {
+        local tac
+        exists gtac && tac=gtac || tac=tac
+        BUFFER=$($tac $HISTFILE | sed 's/^: [0-9]*:[0-9]*;//' | percol --query "$LBUFFER")
+        CURSOR=$#BUFFER         # move cursor
+        zle -R -c               # refresh
+    }
 
-function zaw-src-gisty() {
-    candidates=("${(ps:\n:)$(gisty list)}")
-    actions=("zaw-callback-gisty-append-to-buffer")
-    act_descriptions=("append to edit buffer")
-}
+    zle -N percol_select_history
+    bindkey '^R' percol_select_history
 
-zaw-register-src -n gisty zaw-src-gisty
+    function search-document-by-percol() {
+        DOCUMENT_DIR="$HOME/Dropbox/Documents/"
+        SELECTED_FILE=$(find $DOCUMENT_DIR | \
+            grep -E "\.(xlsx|pptx|docx|pdf|txt|odp|odt|ods)$" | percol --match-method migemo)
+        if [ $? -eq 0 ]; then
+            cygstart $SELECTED_FILE
+        fi
+    }
+    alias sd='search-document-by-percol'
+fi
 
-function zaw-callback-gisty-append-to-buffer() {
-    local gitdir=`echo "${(j:; :)@}" | cut -d":" -f1`
-    local destpath=$GISTY_DIR/$gitdir
-    if [ -n "$gitdir" -a -d "$destpath" ]
-    then
-        LBUFFER="${BUFFER}${destpath}"
-    fi
-}
 
 # my functions on gist
 source $GISTY_DIR/3965342/zsh-function-cd-source-dir.zsh
