@@ -109,6 +109,8 @@ bindkey "\\en" history-beginning-search-forward-end
 #
 bindkey "\e[Z" reverse-menu-complete
 
+bindkey '^R' zaw-history
+
 ## zsh editor
 #
 autoload zed
