@@ -11,3 +11,7 @@ git submodule update --init
 echo 'source $HOME/.zsh.d/zshenv' >~/.zshenv
 echo 'source $HOME/.zsh.d/zshrc' >~/.zshrc
 #+END_EXAMPLE
+
+* Requirement
+
+- canything
