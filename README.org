@@ -14,4 +14,4 @@ echo 'source $HOME/.zsh.d/zshrc' >~/.zshrc
 
 * Requirement
 
-- canything
+- percol
