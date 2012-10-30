@@ -243,15 +243,8 @@ if exists percol; then
     zle -N percol_select_history
     bindkey '^R' percol_select_history
 
-    function search-document-by-percol() {
-        DOCUMENT_DIR="$HOME/Dropbox/Documents/"
-        SELECTED_FILE=$(find $DOCUMENT_DIR | \
-            grep -E "\.(xlsx|pptx|docx|pdf|txt|odp|odt|ods)$" | percol --match-method migemo)
-        if [ $? -eq 0 ]; then
-            cygstart $SELECTED_FILE
-        fi
-    }
-    alias sd='search-document-by-percol'
+    source $GISTY_DIR/3982188/change-directory-gisty-by-percol.zsh
+    source $GISTY_DIR/3981972/search-document-by-percol.zsh
 fi
 
 
