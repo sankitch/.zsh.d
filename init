@@ -1,0 +1,7 @@
+#!/bin/sh
+git submodule update --init -q
+echo 'source $HOME/.zsh.d/zshenv' >$HOME/.zshenv
+echo 'source $HOME/.zsh.d/zshrc' >$HOME/.zshrc
+exec zsh
+
+echo 'zsh setup finished.'
