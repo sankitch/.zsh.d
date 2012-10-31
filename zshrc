@@ -37,6 +37,7 @@ setopt prompt_subst
 # emacs like keybind (e.x. Ctrl-a gets to line head and Ctrl-e gets
 #   to end) and something additions
 #
+zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z} r:|[-_.]=**'
 
 # emacsライクなキーバインド
 bindkey -e
