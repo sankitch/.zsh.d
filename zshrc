@@ -243,10 +243,10 @@ if exists percol; then
     zle -N percol_select_history
     bindkey '^R' percol_select_history
 
-    source $GISTY_DIR/3982188/change-directory-gisty-by-percol.zsh
-    source $GISTY_DIR/3981972/search-document-by-percol.zsh
+    source $HOME/.zsh.d/vendors/sources/gists/3982188/change-directory-gisty-by-percol.zsh
+    source $HOME/.zsh.d/vendors/sources/gists/3981972/search-document-by-percol.zsh
 fi
 
 
 # my functions on gist
-source $GISTY_DIR/3965342/zsh-function-cd-source-dir.zsh
+source $HOME/.zsh.d/vendors/sources/gists/3965342/zsh-function-cd-source-dir.zsh
