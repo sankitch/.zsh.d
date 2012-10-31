@@ -50,4 +50,4 @@ eval "$(rbenv init -)"
 
 ## load function files
 #
-fpath=(~/.zsh.d/functions ${fpath})
+fpath=(~/.zsh.d/site-functions ${fpath})
