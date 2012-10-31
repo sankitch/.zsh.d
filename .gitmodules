@@ -7,3 +7,6 @@
 [submodule "vendors/sources/gists/3965342"]
 	path = vendors/sources/gists/3965342
 	url = git://gist.github.com/3965342.git
+[submodule "vendors/functions/curl-completion"]
+	path = vendors/functions/curl-completion
+	url = git://github.com/Valodim/zsh-curl-completion.git
