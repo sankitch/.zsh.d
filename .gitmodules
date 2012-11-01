@@ -10,3 +10,6 @@
 [submodule "vendors/functions/curl-completion"]
 	path = vendors/functions/curl-completion
 	url = git://github.com/Valodim/zsh-curl-completion.git
+[submodule "vendors/functions/tw-completion"]
+	path = vendors/functions/tw-completion
+	url = git://github.com/glidenote/tw-zsh-completion.git
