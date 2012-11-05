@@ -66,7 +66,8 @@ setopt auto_cd
 
 # auto directory pushd that you can get dirs list by cd -[tab]
 
-#setopt autopushd # cdの履歴を表示
+#setopt autopushd
+# cdの履歴を表示
 setopt auto_pushd
 
 # command correct edition before each completion attempt
@@ -89,14 +90,22 @@ setopt list_types
 
 
 ## Command history configuration
-HISTFILE=~/.zsh_history # historyファイル
-HISTSIZE=50000 # ファイルサイズ
-SAVEHIST=50000 # saveする量
-setopt hist_ignore_dups # 重複を記録しない
-setopt hist_reduce_blanks # スペース排除
-setopt share_history # 履歴ファイルを共有
-setopt EXTENDED_HISTORY # zshの開始終了を記録
-setopt hist_ignore_space #先頭にスペースを入れると履歴に残さない
+# historyファイル
+HISTFILE=~/.zsh_history
+# ファイルサイズ
+HISTSIZE=50000
+# saveする量
+SAVEHIST=50000
+# 重複を記録しない
+setopt hist_ignore_dups
+# スペース排除
+setopt hist_reduce_blanks
+# 履歴ファイルを共有
+setopt share_history
+# zshの開始終了を記録
+setopt EXTENDED_HISTORY
+#先頭にスペースを入れると履歴に残さない
+setopt hist_ignore_space
 
 
 # historical backward/forward search with linehead string binded to ^P/^N
