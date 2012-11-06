@@ -16,3 +16,6 @@
 [submodule "vendors/sources/gists/4024161"]
 	path = vendors/sources/gists/4024161
 	url = git://gist.github.com/4024161.git
+[submodule "vendors/sources/gists/4024162"]
+	path = vendors/sources/gists/4024162
+	url = git://gist.github.com/4024162.git
