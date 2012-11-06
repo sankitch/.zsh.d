@@ -13,3 +13,6 @@
 [submodule "vendors/functions/tw-completion"]
 	path = vendors/functions/tw-completion
 	url = git://github.com/glidenote/tw-zsh-completion.git
+[submodule "vendors/sources/gists/4024161"]
+	path = vendors/sources/gists/4024161
+	url = git://gist.github.com/4024161.git
