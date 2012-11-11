@@ -145,8 +145,6 @@ xterm|xterm-color|kterm|kterm-color)
     ;;
 esac
 
-RPROMPT='[`rprompt-git-current-branch`%~]'
-
 #if [[ -f ~/.nodebrew/nodebrew ]]; then
 #    nodebrew use v0.8.2
 #fi
@@ -213,31 +211,46 @@ function tweet {
     echo $@ | tw --pipe --silent
 }
 
-function rprompt-git-current-branch {
-        local name st color
+autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 
+function rprompt-git-current-branch {
+        local name st color gitdir action
         if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
                 return
         fi
-        name=$(basename "`git symbolic-ref HEAD 2> /dev/null`")
+
+        name=`git rev-parse --abbrev-ref=loose HEAD 2> /dev/null`
         if [[ -z $name ]]; then
                 return
         fi
-        st=`git status 2> /dev/null`
-        if [[ -n `echo "$st" | grep "^nothing to"` ]]; then
-                color=${fg[green]}
-        elif [[ -n `echo "$st" | grep "^nothing added"` ]]; then
-                color=${fg[yellow]}
-        elif [[ -n `echo "$st" | grep "^# Untracked"` ]]; then
-                color=${fg_bold[red]}
-        else
-                color=${fg[red]}
-        fi
 
-        # %{...%} は囲まれた文字列がエスケープシーケンスであることを明示する
-        # これをしないと右プロンプトの位置がずれる
-        echo "%{$color%}$name%{$reset_color%} "
+        gitdir=`git rev-parse --git-dir 2> /dev/null`
+        action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
+
+	if [[ -e "$gitdir/rprompt-nostatus" ]]; then
+		echo "$name$action "
+		return
+	fi
+
+        st=`git status 2> /dev/null`
+	if [[ "$st" =~ "(?m)^nothing to" ]]; then
+                color=%F{green}
+	elif [[ "$st" =~ "(?m)^nothing added" ]]; then
+                color=%F{yellow}
+	elif [[ "$st" =~ "(?m)^# Untracked" ]]; then
+                color=%B%F{red}
+        else
+              
+        echo "$color$name$action%f%b "
 }
+
+# PCRE 互換の正規表現を使う
+setopt re_match_pcre
+
+# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
+setopt prompt_subst
+
+RPROMPT='[`rprompt-git-current-branch`%~]'
 
 function exists { which $1 &> /dev/null }
 
