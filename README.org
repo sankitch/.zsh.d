@@ -12,4 +12,6 @@ init
 
 * Requirement
 
+- gisty
 - percol
+- w3m
