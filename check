@@ -1,0 +1,12 @@
+#!/bin/sh
+
+# requires
+commands=("gisty" "percol" "w3m")
+
+# check exists
+for i in "${commands[@]}"
+  do
+    if which $i >/dev/null; then
+      echo `which $i` "is ok."
+    fi
+  done
