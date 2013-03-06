@@ -5,3 +5,4 @@ fi
 PHP_VERSIONS=$HOME/.phpenv/versions
 export PHP_HOME=$HOME/.phpenv/versions
 source $(brew --prefix php-version)/php-version.sh && php-version 5.2.17 >/dev/null
+alias ls="ls -G -w"

@@ -189,23 +189,6 @@ alias gcomp="curl -s http://getcomposer.org/installer | php"
 
 alias su="su -l"
 
-case "${OSTYPE}" in
-freebsd*|darwin*)
-    alias ls="ls -G -w"
-    ;;
-linux*)
-    alias ls="ls --color"
-    ;;
-cygwin*)
-    alias ls="ls -v -F --color=auto"
-    alias -g open=cygstart
-    alias apt-cyg='apt-cyg -u -m ftp://ftp.iij.ad.jp/pub/cygwin/'
-    alias sudo="sudo"
-    alias ec="emacsclientw -s sankitch-win7-server"
-    alias mysql="mysql -h127.0.0.1"
-    ;;
-esac
-
 # my functions
 function tweet {
     echo $@ | tw --pipe --silent
