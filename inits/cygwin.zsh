@@ -13,5 +13,6 @@ alias apt-cyg='apt-cyg -u -m ftp://ftp.iij.ad.jp/pub/cygwin/'
 alias sudo="sudo"
 alias ec="emacsclientw -s sankitch-win7-server"
 alias mysql="mysql -h127.0.0.1"
+alias vim="gvim"
 
 export LIBRARY_PATH=/usr/lib/w32api:$LIBRARY_PATH
