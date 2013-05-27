@@ -162,11 +162,12 @@ case "${OSTYPE}" in
         ;;
 esac
 
+[ ${STY} ] || screen -rx || screen -D -RR
 
 # aliases
 # global
-alias -g re="rbenv exec"
-alias -g bi="bundle install --path=vendor/bundle --without production"
+# alias -g re="rbenv exec"
+alias -g bi="bundle install --path=.bundle --without production"
 alias -g bu="bundle update"
 alias -g be="bundle exec"
 alias -g PE="| percol --match-method=migemo"
@@ -176,11 +177,12 @@ alias where="command -v"
 alias j="jobs -l"
 alias screen="screen -U -s zsh"
 alias sudo="sudo -E "
-alias github="cd ~/.github; git"
 
 alias la="ls -a"
 alias ll="ls -l"
 alias lla="ls -la"
+
+alias e="cd ~/.emacs.d"
 
 alias du="du -h"
 alias df="df -h"
@@ -194,47 +196,11 @@ function tweet {
     echo $@ | tw --pipe --silent
 }
 
-autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
-
-function rprompt-git-current-branch {
-        local name st color gitdir action
-        if [[ "$PWD" =~ '/\.git(/.*)?$' ]]; then
-                return
-        fi
-
-        name=`git rev-parse --abbrev-ref=loose HEAD 2> /dev/null`
-        if [[ -z $name ]]; then
-                return
-        fi
-
-        gitdir=`git rev-parse --git-dir 2> /dev/null`
-        action=`VCS_INFO_git_getaction "$gitdir"` && action="($action)"
-
-
-        if [[ -e "$gitdir/rprompt-nostatus" ]]; then
-            echo "$name$action "
-            return
-        fi
-
-        st=`git status 2> /dev/null`
-        if [[ "$st" =~ "(?m)^nothing to" ]]; then
-            color=%F{green}
-        elif [[ "$st" =~ "(?m)^nothing added" ]]; then
-            color=%F{yellow}
-        elif [[ "$st" =~ "(?m)^# Untracked" ]]; then
-            color=%B%F{red}
-        else
-            echo "$color$name$action%f%b "
-        fi
+function github {
+    cd $HOME"/Develop/github"
+    git clone git://github.com/$@.git
 }
-
-# PCRE 互換の正規表現を使う
-setopt re_match_pcre
-
-# プロンプトが表示されるたびにプロンプト文字列を評価、置換する
-setopt prompt_subst
-
-RPROMPT='[`rprompt-git-current-branch`%~]'
+autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 
 function exists { which $1 &> /dev/null }
 
@@ -274,3 +240,4 @@ fi
 
 # my functions on gist
 source $HOME/.zsh.d/vendors/sources/gists/3965342/zsh-function-cd-source-dir.zsh
+source $HOME/.zsh.d/vendors/sources/gists/5648186/JPG2jpg
