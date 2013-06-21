@@ -1,10 +1,11 @@
-export PATH=/bin:/opt/local/bin:/opt/local/sbin/:$HOME/bin:$HOME/.rbenv/bin:$HOME/.github/bin:$HOME/.nodebrew/current/bin:$HOME/scripts:$PATH
+export PATH=/bin:/opt/local/bin:/opt/local/sbin/:$HOME/bin:$HOME/.github/bin:$HOME/.nodebrew/current/bin:$HOME/scripts:/usr/local/heroku/bin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 export LANG=ja_JP.UTF-8 # 日本語環境
 export LC_CTYPE=ja_JP.UTF-8 # 日本語環境
 export PAGER=w3m
 export GISTY_DIR=$HOME/Develop/gists
 export GISTY_ACCESS_TOKEN=ac81117207155c85f34cac9e5732b22fba0856c4
+export WWW_HOME=http://www.sankitch.me/
 ## Environment variable configuration
 #
 # LANG
@@ -45,8 +46,6 @@ jfbterm-color)
     zstyle ':completion:*' list-colors 'di=;36;1' 'ln=;35;1' 'so=;32;1' 'ex=31;1' 'bd=46;34' 'cd=43;34'
     ;;
 esac
-
-eval "$(rbenv init -)"
 
 ## load function files
 #

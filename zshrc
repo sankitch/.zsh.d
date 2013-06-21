@@ -162,8 +162,6 @@ case "${OSTYPE}" in
         ;;
 esac
 
-[ ${STY} ] || screen -rx || screen -D -RR
-
 # aliases
 # global
 # alias -g re="rbenv exec"
@@ -171,6 +169,7 @@ alias -g bi="bundle install --path=.bundle --without production"
 alias -g bu="bundle update"
 alias -g be="bundle exec"
 alias -g PE="| percol --match-method=migemo"
+alias -g JQ="| jq ."
 
 # aliases
 alias where="command -v"
@@ -203,6 +202,23 @@ function github {
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 
 function exists { which $1 &> /dev/null }
+
+# VCSの情報を取得するzshの便利関数 vcs_infoを使う
+autoload -Uz vcs_info
+
+# 表示フォーマットの指定
+# %b ブランチ情報
+# %a アクション名(mergeなど)
+zstyle ':vcs_info:*' formats '[%b]'
+zstyle ':vcs_info:*' actionformats '[%b|%a]'
+precmd () {
+    psvar=()
+    LANG=en_US.UTF-8 vcs_info
+    [[ -n "$vcs_info_msg_0_" ]] && psvar[1]="$vcs_info_msg_0_"
+}
+
+# バージョン管理されているディレクトリにいれば表示，そうでなければ非表示
+RPROMPT="%1(v|%F{green}%1v%f|)"
 
 if exists percol; then
     function percol_select_history() {
