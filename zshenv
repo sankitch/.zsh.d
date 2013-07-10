@@ -50,3 +50,9 @@ esac
 ## load function files
 #
 fpath=(~/.zsh.d/site-functions ${fpath})
+
+ARCHNAME=$(perl -MConfig -e 'print $Config{archname}')
+EXTLIB=./extlib/lib/perl5:./extlib/lib/perl5/$ARCHNAME
+PERL5LIB=./lib:$EXTLIB
+
+export PERL5LIB=$PERL5LIB

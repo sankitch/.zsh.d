@@ -170,6 +170,7 @@ alias -g bu="bundle update"
 alias -g be="bundle exec"
 alias -g PE="| percol --match-method=migemo"
 alias -g JQ="| jq ."
+alias -g T2C="| sed -e 's/\t/,/g'"
 
 # aliases
 alias where="command -v"
@@ -177,11 +178,15 @@ alias j="jobs -l"
 alias screen="screen -U -s zsh"
 alias sudo="sudo -E "
 
+alias -s org=ec
+
+alias l="ls -1"
 alias la="ls -a"
 alias ll="ls -l"
 alias lla="ls -la"
 
 alias e="cd ~/.emacs.d"
+alias z="cd ~/.zsh.d"
 
 alias du="du -h"
 alias df="df -h"
@@ -191,6 +196,32 @@ alias gcomp="curl -s http://getcomposer.org/installer | php"
 alias su="su -l"
 
 # my functions
+function do_enter() {
+    if [ -n "$BUFFER" ]; then
+        zle accept-line
+        return 0
+    fi
+    echo
+    ls
+    # ↓おすすめ
+    # ls_abbrev
+    if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
+        echo
+        echo -e "\e[0;33m--- git status ---\e[0m"
+        git status -sb
+    fi
+    zle reset-prompt
+    return 0
+}
+zle -N do_enter
+bindkey '^m' do_enter
+
+function git-root() {
+  if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
+    cd `pwd`/`git rev-parse --show-cdup`
+  fi
+}
+
 function tweet {
     echo $@ | tw --pipe --silent
 }

@@ -19,7 +19,7 @@ alias ls="ls -v -F --color=auto --hide='NTUSER*' --hide='ntuser*'"
 alias -g open=cygstart
 alias apt-cyg='apt-cyg -u -m ftp://ftp.iij.ad.jp/pub/cygwin/'
 alias sudo="sudo"
-alias ec="emacsclientw -s sankitch-win7-server"
+alias ec="emacsclientw -s sankitch-win7z-server"
 alias mysql="mysql -h127.0.0.1"
 alias vim="gvim"
 
