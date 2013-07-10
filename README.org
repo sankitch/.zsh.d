@@ -1,16 +1,14 @@
-#+TITLE: My zsh configurations
-#+AUTHOR: sankitch <i@sankitch.me>
-My zsh configurations.
+* My zsh configurations.
 
-* Usage
+** Usage
 
-#+BEGIN_EXAMPLE
+#+BEGIN_EXAMPLE shell
 cd; git clone git@github.com:sankitch/.zsh.d.git
 cd .zsh.d
 init
 #+END_EXAMPLE
 
-* Requirement
+** Requirement
 
 - gisty
 - percol
