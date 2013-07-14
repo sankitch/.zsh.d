@@ -145,10 +145,6 @@ xterm|xterm-color|kterm|kterm-color)
     ;;
 esac
 
-#if [[ -f ~/.nodebrew/nodebrew ]]; then
-#    nodebrew use v0.8.2
-#fi
-
 # load inits file
 case "${OSTYPE}" in
     cygwin)
