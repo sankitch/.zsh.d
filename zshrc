@@ -163,37 +163,7 @@ case "${OSTYPE}" in
 esac
 
 # aliases
-# global
-# alias -g re="rbenv exec"
-alias -g bi="bundle install --path=.bundle --without production"
-alias -g bu="bundle update"
-alias -g be="bundle exec"
-alias -g PE="| percol --match-method=migemo"
-alias -g JQ="| jq ."
-alias -g T2C="| sed -e 's/\t/,/g'"
-
-# aliases
-alias where="command -v"
-alias j="jobs -l"
-alias screen="screen -U -s zsh"
-alias sudo="sudo -E "
-
-alias -s org=ec
-
-alias l="ls -1"
-alias la="ls -a"
-alias ll="ls -l"
-alias lla="ls -la"
-
-alias e="cd ~/.emacs.d"
-alias z="cd ~/.zsh.d"
-
-alias du="du -h"
-alias df="df -h"
-
-alias gcomp="curl -s http://getcomposer.org/installer | php"
-
-alias su="su -l"
+source $HOME/.zsh.d/aliases
 
 # my functions
 function do_enter() {

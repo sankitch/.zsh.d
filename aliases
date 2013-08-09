@@ -1,0 +1,33 @@
+# global
+# alias -g re="rbenv exec"
+alias -g bi="bundle install --path=.bundle --without production"
+alias -g bu="bundle update"
+alias -g be="bundle exec"
+alias -g PE="| percol --match-method=migemo"
+alias -g JQ="| jq ."
+alias -g L="| wc -l"
+alias -g T2C="| sed -e 's/\t/,/g'"
+
+# aliases
+alias where="command -v"
+alias j="jobs -l"
+alias screen="screen -U -s zsh"
+alias sudo="sudo -E "
+
+alias -s org=ec
+
+alias l="ls -1Ah"
+alias la="ls -aAh"
+alias ll="ls -lAh"
+alias lla="ls -laAh"
+
+alias e="cd ~/.emacs.d"
+alias z="cd ~/.zsh.d"
+
+alias du="du -h"
+alias df="df -h"
+
+alias gcomp="curl -s http://getcomposer.org/installer | php"
+
+alias su="su -l"
+
