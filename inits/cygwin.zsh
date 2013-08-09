@@ -21,12 +21,14 @@ alias apt-cyg='apt-cyg -u -m ftp://ftp.iij.ad.jp/pub/cygwin/'
 alias sudo="sudo"
 alias ec="emacsclientw"
 alias mysql="mysql -h127.0.0.1"
-alias vim="gvim"
 
 function ipconfig {
     ipconfig.exe $@ | nkf -w
 }
 
+function vim {
+    gvim $(cygpath -w $*) &
+}
 
 export LIBRARY_PATH=/usr/lib/w32api:$LIBRARY_PATH
 
