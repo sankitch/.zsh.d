@@ -9,5 +9,6 @@
 ## Requirement
 
 - gisty
+- tw
 - percol
 - w3m
