@@ -1,4 +1,4 @@
-export PATH=/bin:/opt/local/bin:/opt/local/sbin/:$HOME/bin:$HOME/.github/bin:$HOME/.nodebrew/current/bin:$HOME/scripts:/usr/local/heroku/bin:$HOME/.rbenv/bin:$PATH
+export PATH=/bin:/opt/local/bin:/opt/local/sbin/:$HOME/bin:$HOME/.github/bin:$HOME/.nodebrew/current/bin:$HOME/scripts:/usr/local/heroku/bin:$HOME/.wp-cli/bin:$HOME/.rbenv/bin:$PATH
 export MANPATH=/opt/local/man:$MANPATH
 export LANG=ja_JP.UTF-8 # 日本語環境
 export LC_CTYPE=ja_JP.UTF-8 # 日本語環境
