@@ -15,22 +15,28 @@ if [ -z "$SSH_AUTH_SOCK" -a -x "$SSHAGENT" ]; then
 fi
 
 # aliases
-alias ls="ls -v -F --color=auto --hide='NTUSER*' --hide='ntuser*'"
+alias ls="ls -vF --color=auto --hide='NTUSER*' --hide='ntuser*'"
 alias -g open=cygstart
 alias apt-cyg='apt-cyg -u -m ftp://ftp.iij.ad.jp/pub/cygwin/'
 alias sudo="sudo"
-alias ec="emacsclientw"
+alias ec="emacsclient"
 alias mysql="mysql -h127.0.0.1"
 
 function ipconfig {
     ipconfig.exe $@ | nkf -w
 }
 
-function vim {
-    gvim $(cygpath -w $*) &
-}
-
 export LIBRARY_PATH=/usr/lib/w32api:$LIBRARY_PATH
 
-[ ${STY} ] || screen -rx || screen -D -RR
+#[ ${STY} ] || screen -rx || screen -D -RR
 
+#export JAVA_HOME=/winapp/java/jdk1.7.0_25
+#export PATH=$JAVA_HOME/bin:$PATH
+#export SCALA_HOME=/winapp/scala
+#export PATH=$SCALA_HOME/bin:$PATH
+#export PLAY_HOME=/winapp/play-2.1.3
+#export PATH=$PLAY_HOME:$PATH
+
+export WORKON_HOME=$HOME/Develop/pydev
+source /usr/bin/virtualenvwrapper.sh
+export PIP_VIRTUALENV_BASE=$WORKON_HOME
