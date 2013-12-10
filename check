@@ -1,7 +1,7 @@
 #!/bin/sh
 
 # requires
-commands=("gisty" "percol" "w3m")
+commands=("gisty" "percol" "w3m" "tmux" "z" "rbenv" "pyenv")
 
 # check exists
 for i in "${commands[@]}"

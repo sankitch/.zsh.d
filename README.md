@@ -12,3 +12,5 @@
 - tw
 - percol
 - w3m
+- tmux
+- rbenv
