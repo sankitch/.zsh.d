@@ -1,5 +1,5 @@
 # global
-# alias -g re="rbenv exec"
+alias -g re="rbenv exec"
 alias bundle3="bundle _1.3.4_"
 alias -g bi3="bundle _1.3.4_ install --path=.bundle --without production"
 alias -g bi="bundle install --path=.bundle --without production"
@@ -12,7 +12,6 @@ alias -g T2C="| sed -e 's/\t/,/g'"
 
 # aliases
 alias where="command -v"
-alias screen="screen -U -s zsh"
 alias sudo="sudo -E "
 
 alias -s org=ec
@@ -32,3 +31,4 @@ alias gcomp="curl -s http://getcomposer.org/installer | php"
 
 alias su="su -l"
 
+alias emacs="env TERM=xterm emacs -nw"
