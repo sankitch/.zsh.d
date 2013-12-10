@@ -162,7 +162,7 @@ esac
 source $HOME/.zsh.d/aliases
 
 # dircolors
-eval `dircolors ./dircolors/solarized/dircolors.256dark`
+eval `dircolors $HOME/.zsh.d/dircolors/solarized/dircolors.256dark`
 
 # my functions
 function do_enter() {
