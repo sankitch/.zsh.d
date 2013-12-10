@@ -130,20 +130,20 @@ autoload zed
 setopt complete_aliases
 
 ## terminal configuration
-case "${TERM}" in
-screen)
-    TERM=xterm
-    ;;
-esac
+#case "${TERM}" in
+#screen)
+#    TERM=xterm
+#    ;;
+#esac
 
 # set terminal title including current directory
-case "${TERM}" in
-xterm|xterm-color|kterm|kterm-color)
-    precmd() {
-        echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
-    }
-    ;;
-esac
+#case "${TERM}" in
+#xterm|xterm-color|kterm|kterm-color)
+#    precmd() {
+#        echo -ne "\033]0;${USER}@${HOST%%.*}:${PWD}\007"
+#    }
+#    ;;
+#esac
 
 # load inits file
 case "${OSTYPE}" in
