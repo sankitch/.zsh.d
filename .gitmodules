@@ -22,3 +22,6 @@
 [submodule "vendors/sources/gists/5648186"]
 	path = vendors/sources/gists/5648186
 	url = git://gist.github.com/5648186.git
+[submodule "dircolors/solarized"]
+	path = dircolors/solarized
+	url = https://github.com/seebi/dircolors-solarized.git
