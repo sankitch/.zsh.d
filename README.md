@@ -12,5 +12,9 @@
 - tw
 - percol
 - w3m
-- tmux
+- ack
 - rbenv
+- bundle
+- ack
+- z
+- tmux
