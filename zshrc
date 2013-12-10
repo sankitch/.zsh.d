@@ -161,6 +161,9 @@ esac
 # aliases
 source $HOME/.zsh.d/aliases
 
+# dircolors
+eval `dircolors ./dircolors/solarized/dircolors.256dark`
+
 # my functions
 function do_enter() {
     if [ -n "$BUFFER" ]; then
