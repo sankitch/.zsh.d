@@ -8,6 +8,7 @@ export PAGER=w3m
 export GISTY_DIR=$HOME/Develop/gists
 export GISTY_ACCESS_TOKEN=ac81117207155c85f34cac9e5732b22fba0856c4
 export WWW_HOME=http://www.sankitch.me/
+export COMPOSER_PROCESS_TIMEOUT=1000
 ## Environment variable configuration
 #
 # LANG
@@ -22,7 +23,7 @@ export GREP_COLOR="1;32"
 export GREP_OPTIONS=--color=auto
 
 ## load function files
-fpath=(~/.zsh.d/site-functions ${fpath})
+fpath=(~/.zsh.d/functions/*(N-/) $fpath)
 
 ARCHNAME=$(perl -MConfig -e 'print $Config{archname}')
 EXTLIB=./extlib/lib/perl5:./extlib/lib/perl5/$ARCHNAME
