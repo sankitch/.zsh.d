@@ -1,0 +1,3 @@
+#compdef d
+_files -W ~/Develop/ && return 0;
+return 1;
