@@ -1,9 +1,7 @@
-ZSH=$HOME/.zsh.d
 #
 # set prompt
 #
-autoload colors
-colors
+autoload -Uz colors && colors
 case ${UID} in
 0)
     PROMPT="%{${fg[cyan]}%}$(echo ${HOST%%.*} | tr '[a-z]' '[A-Z]') %B%{${fg[red]}%}%/#%{${reset_color}%}%b "
@@ -19,7 +17,6 @@ case ${UID} in
     ;;
 esac
 
-
 # PROMPT
 PS1="[@${HOST%%.*} %1~]%(!.#.$) "
 
@@ -31,7 +28,6 @@ setopt transient_rprompt
 
 # 便利なプロンプト
 setopt prompt_subst
-
 
 zstyle ':completion:*' matcher-list 'm:{a-zA-Z}={A-Za-z} r:|[-_.]=**'
 
@@ -49,25 +45,13 @@ bindkey "^[[4~" end-of-line
 # Del
 bindkey "^[[3~" delete-char
 
-# 強力な補完機能
-autoload -U compinit
-#compinit -u # このあたりを使わないとzsh使ってる意味なし
-if [ "`/bin/uname -o 2> /dev/null`" = "Cygwin" ]; then
- # cygwinの設定
- compinit -u
-elif [ "`/bin/uname -s 2> /dev/null`" = "Interix" ]; then
- # interixの設定
- compinit -u
-else
- compinit
-fi
+autoload -Uz compinit && compinit -u
 
 # auto change directory
 setopt auto_cd
 
 # auto directory pushd that you can get dirs list by cd -[tab]
 
-#setopt autopushd
 # cdの履歴を表示
 setopt auto_pushd
 
@@ -89,13 +73,9 @@ setopt pushd_ignore_dups
 # 補完一覧ファイル種別表示
 setopt list_types
 
-
 ## Command history configuration
-# historyファイル
 HISTFILE=~/.zsh_history
-# ファイルサイズ
 HISTSIZE=50000
-# saveする量
 SAVEHIST=50000
 # 重複を記録しない
 setopt hist_ignore_dups
@@ -108,9 +88,8 @@ setopt EXTENDED_HISTORY
 #先頭にスペースを入れると履歴に残さない
 setopt hist_ignore_space
 
-
 # historical backward/forward search with linehead string binded to ^P/^N
-autoload history-search-end
+autoload -Uz history-search-end
 zle -N history-beginning-search-backward-end history-search-end
 zle -N history-beginning-search-forward-end history-search-end
 bindkey "^P" history-beginning-search-backward-end
@@ -122,7 +101,7 @@ bindkey "\\en" history-beginning-search-forward-end
 bindkey "\e[Z" reverse-menu-complete
 
 ## zsh editor
-autoload zed
+autoload -Uz zed
 
 ## Alias configuration
 #
@@ -165,33 +144,6 @@ source $ZSH/aliases
 # dircolors
 eval `dircolors $ZSH/dircolors/solarized/dircolors.256dark`
 
-# my functions
-function do_enter() {
-    if [ -n "$BUFFER" ]; then
-        zle accept-line
-        return 0
-    fi
-    echo
-    ls
-    # ↓おすすめ
-    # ls_abbrev
-    if [ "$(git rev-parse --is-inside-work-tree 2> /dev/null)" = 'true' ]; then
-        echo
-        echo -e "\e[0;33m--- git status ---\e[0m"
-        git status -sb
-    fi
-    zle reset-prompt
-    return 0
-}
-zle -N do_enter
-bindkey '^m' do_enter
-
-function git-root() {
-  if git rev-parse --is-inside-work-tree > /dev/null 2>&1; then
-    cd `pwd`/`git rev-parse --show-cdup`
-  fi
-}
-
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
 
 # VCSの情報を取得するzshの便利関数 vcs_infoを使う
@@ -217,7 +169,7 @@ if exists percol; then
 fi
 
 # Attache tmux
-if ( ! test $TMUX ) && ( ! expr $TERM : "^screen" > /dev/null ) && which tmux > /dev/null; then
+if ( ! test $TMUX ) && ( ! expr $TERM : "^screen" > /dev/null ) && exists tmux; then
     if ( tmux has-session ); then
         session=`tmux list-sessions | grep -e '^[0-9].*]$' | head -n 1 | sed -e 's/^\([0-9]\+\).*$/\1/'`
         if [ -n "$session" ]; then
@@ -232,3 +184,5 @@ if ( ! test $TMUX ) && ( ! expr $TERM : "^screen" > /dev/null ) && which tmux > 
         tmux
     fi
 fi
+
+[ -f $ZSH/zshrc_local ] && . $ZSH/zshrc_local
