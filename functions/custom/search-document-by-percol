@@ -1,0 +1,5 @@
+DOCUMENT_DIR="$HOME/Dropbox/Documents/ $HOME/Desktop/ $HOME/Documents"
+SELECTED_FILE=$(echo $DOCUMENT_DIR | xargs find | grep -E "\.(xlsx|xls|pptx|ppt|docx|doc|pdf|txt|odp|odt|ods|xmind|mm|glink|gsheet)$" | percol --match-method migemo)
+if [ $? -eq 0 ]; then
+    cygstart $SELECTED_FILE
+fi

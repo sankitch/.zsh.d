@@ -1,0 +1,1 @@
+echo $@ | tw --pipe --silent

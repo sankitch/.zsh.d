@@ -1,0 +1,2 @@
+SELECTED_GIST=$(gisty list | awk /:/ | percol --match-method migemo | awk -F ':' '{ print $1 }')
+cd $GISTY_DIR/$SELECTED_GIST

@@ -24,6 +24,11 @@ export GREP_OPTIONS=--color=auto
 
 ## load function files
 fpath=(~/.zsh.d/functions/*(N-/) $fpath)
+autoload -Uz tweet
+autoload -Uz exists
+autoload -Uz percol_select_history
+autoload -Uz change-directory-gisty-by-percol
+autoload -Uz search-document-by-percol
 
 ARCHNAME=$(perl -MConfig -e 'print $Config{archname}')
 EXTLIB=./extlib/lib/perl5:./extlib/lib/perl5/$ARCHNAME

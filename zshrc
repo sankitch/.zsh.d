@@ -191,17 +191,7 @@ function git-root() {
   fi
 }
 
-function tweet {
-    echo $@ | tw --pipe --silent
-}
-
-function github {
-    cd $HOME"/Develop/github"
-    git clone git://github.com/$@.git
-}
 autoload -Uz VCS_INFO_get_data_git; VCS_INFO_get_data_git 2> /dev/null
-
-function exists { which $1 &> /dev/null }
 
 # VCSの情報を取得するzshの便利関数 vcs_infoを使う
 autoload -Uz vcs_info
@@ -221,19 +211,8 @@ precmd () {
 RPROMPT="%1(v|%F{green}%1v%f|)"
 
 if exists percol; then
-    function percol_select_history() {
-        local tac
-        exists gtac && tac=gtac || tac=tac
-        BUFFER=$($tac $HISTFILE | sed 's/^: [0-9]*:[0-9]*;//' | percol --match-method migemo --query "$LBUFFER")
-        CURSOR=$#BUFFER         # move cursor
-        zle -R -c               # refresh
-    }
-
     zle -N percol_select_history
     bindkey '^R' percol_select_history
-
-    source $HOME/.zsh.d/vendors/sources/gists/3982188/change-directory-gisty-by-percol.zsh
-    source $HOME/.zsh.d/vendors/sources/gists/3981972/search-document-by-percol.zsh
 fi
 
 # Attache tmux
@@ -252,8 +231,3 @@ if ( ! test $TMUX ) && ( ! expr $TERM : "^screen" > /dev/null ) && which tmux > 
         tmux
     fi
 fi
-
-
-# my functions on gist
-source $HOME/.zsh.d/vendors/sources/gists/3965342/zsh-function-cd-source-dir.zsh
-source $HOME/.zsh.d/vendors/sources/gists/5648186/JPG2jpg
