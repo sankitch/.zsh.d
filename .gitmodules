@@ -1,27 +1,3 @@
-[submodule "vendors/sources/gists/3982188"]
-	path = vendors/sources/gists/3982188
-	url = git://gist.github.com/3982188.git
-[submodule "vendors/sources/gists/3981972"]
-	path = vendors/sources/gists/3981972
-	url = git://gist.github.com/3981972.git
-[submodule "vendors/sources/gists/3965342"]
-	path = vendors/sources/gists/3965342
-	url = git://gist.github.com/3965342.git
-[submodule "vendors/functions/curl-completion"]
-	path = vendors/functions/curl-completion
-	url = git://github.com/Valodim/zsh-curl-completion.git
-[submodule "vendors/functions/tw-completion"]
-	path = vendors/functions/tw-completion
-	url = git://github.com/glidenote/tw-zsh-completion.git
-[submodule "vendors/sources/gists/4024161"]
-	path = vendors/sources/gists/4024161
-	url = git://gist.github.com/4024161.git
-[submodule "vendors/sources/gists/4024162"]
-	path = vendors/sources/gists/4024162
-	url = git://gist.github.com/4024162.git
-[submodule "vendors/sources/gists/5648186"]
-	path = vendors/sources/gists/5648186
-	url = git://gist.github.com/5648186.git
 [submodule "dircolors/solarized"]
 	path = dircolors/solarized
 	url = https://github.com/seebi/dircolors-solarized.git
