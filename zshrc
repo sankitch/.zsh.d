@@ -1,3 +1,4 @@
+ZSH=$HOME/.zsh.d
 #
 # set prompt
 #
@@ -148,21 +149,21 @@ setopt complete_aliases
 # load inits file
 case "${OSTYPE}" in
     cygwin)
-        source $HOME/.zsh.d/inits/cygwin.zsh
+        source $ZSH/inits/cygwin.zsh
         ;;
     freebsd*|darwin*)
-        source $HOME/.zsh.d/inits/darwin.zsh
+        source $ZSH/inits/darwin.zsh
         ;;
     linux*)
-        source $HOME/.zsh.d/inits/linux.zsh
+        source $ZSH/inits/linux.zsh
         ;;
 esac
 
 # aliases
-source $HOME/.zsh.d/aliases
+source $ZSH/aliases
 
 # dircolors
-eval `dircolors $HOME/.zsh.d/dircolors/solarized/dircolors.256dark`
+eval `dircolors $ZSH/dircolors/solarized/dircolors.256dark`
 
 # my functions
 function do_enter() {

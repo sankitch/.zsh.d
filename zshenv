@@ -2,8 +2,8 @@ export SCALA_HOME=/usr/local/scala
 export PLAY_HOME=/usr/local/play
 export PATH=/bin:/opt/local/bin:/opt/local/sbin/:$HOME/bin:$HOME/.github/bin:$HOME/.nodebrew/current/bin:$HOME/scripts:/usr/local/heroku/bin:$HOME/.wp-cli/bin:$HOME/.rbenv/bin:$SCALA_HOME/bin:$PLAY_HOME:$PATH
 export MANPATH=/opt/local/man:$MANPATH
-export LANG=ja_JP.UTF-8 # 日本語環境
-export LC_CTYPE=ja_JP.UTF-8 # 日本語環境
+export LANG=ja_JP.UTF-8
+export LC_CTYPE=ja_JP.UTF-8
 export PAGER=w3m
 export GISTY_DIR=$HOME/Develop/gists
 export GISTY_ACCESS_TOKEN=ac81117207155c85f34cac9e5732b22fba0856c4
@@ -23,7 +23,7 @@ export GREP_COLOR="1;32"
 export GREP_OPTIONS=--color=auto
 
 ## load function files
-fpath=(~/.zsh.d/functions/*(N-/) $fpath)
+fpath=($ZSH/functions/*(N-/) $fpath)
 autoload -Uz tweet
 autoload -Uz exists
 autoload -Uz percol_select_history
