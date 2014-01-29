@@ -12,6 +12,7 @@ autoload -Uz exists
 autoload -Uz percol_select_history
 autoload -Uz change-directory-gisty-by-percol
 autoload -Uz search-document-by-percol
+autoload -Uz d
 
 #
 # Set environment variables
