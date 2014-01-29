@@ -46,6 +46,7 @@ bindkey "^[[4~" end-of-line
 bindkey "^[[3~" delete-char
 
 autoload -Uz compinit && compinit -u
+zstyle ':completion:*:default' menu select=1
 
 # auto change directory
 setopt auto_cd
